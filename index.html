@@ -1,42 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Мои заметки</title>
 </head>
 <body>
     <div class="wrapper">
         <div class="menu">
             <h1 class="menu__title">Мои заметки</h1>
-            <button class="menu__button">Новая заметка</button>
+            <button class="menu__button" id="newNoteBtn">Новая заметка</button>
             <h2 class="spisok">Теги</h2>
-            <div class="spisok__item">Все</div>
-            <div class="spisok__item">Идеи</div>
-            <div class="spisok__item">Личное</div>
-            <div class="spisok__item">Работа</div>
-            <div class="spisok__item">Список покупок</div>
+            <div class="spisok__item active" data-tag="all">Все</div>
+            <div class="spisok__item" data-tag="ideas">Идеи</div>
+            <div class="spisok__item" data-tag="personal">Личное</div>
+            <div class="spisok__item" data-tag="work">Работа</div>
+            <div class="spisok__item" data-tag="shopping">Список покупок</div>
         </div>
         <div class="content">
             <div class="search">
-                <input type="text" class="input" placeholder="Поиск">
-                <button class="search__button"></button>
+                <input type="text" class="input" id="searchInput" placeholder="Поиск">
+                <button class="search__button" id="searchBtn"></button>
             </div>
-            <div class="zadachi">
-                <div class="zadachi__item">
-                    <div class="zadachi__item-top">
-                        <span><h2>Title</h2></span>
-                        <span>Работа</span>
-                    </div>
-                    <div class="zadachi__item-down">
-                        <span>30 июля 2025</span>
-                    </div>
-                </div>
+            <div class="zadachi" id="notesContainer">
+                <!-- Заметки будут появляться здесь -->
             </div>
         </div>
-
     </div>
-    
+
+    <script src="script.js"></script>
 </body>
 </html>

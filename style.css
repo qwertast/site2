@@ -21,10 +21,10 @@ body{
     background: #fcfbfc;
     border-right: 1px solid #f0f0f0;
     padding: 30px;
+    overflow-y: auto;
 }
 .menu__title{
     text-align: center;
-
 }
 .menu__button{
     background: #4499FF;
@@ -34,12 +34,18 @@ body{
     border-radius: 10px;
     width: 100%;
     font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.menu__button:hover {
+    background: #3388EE;
 }
 .input{
     border: 1px solid #D8D9D0;
-    padding: 5px 5px;
-    flex-grow: 1;border:1px solid #D8D9D0;
+    padding: 10px;
+    flex-grow: 1;
     border-radius: 10px;
+    font-size: 14px;
 }
 .search{
     display: flex;
@@ -52,34 +58,160 @@ body{
     margin: 0;
     border: none;
     background: #4499FF url(./photo/Vector.svg) no-repeat;
-
     border-radius: 10px;
     background-position: center;
     justify-content: flex-end;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.search__button:hover {
+    background-color: #3388EE;
 }
 .content{
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Добавлено для правильной работы скролла */
 }
 .spisok{
-    color: #74777b
+    color: #74777b;
+    margin-top: 30px;
 }
 .spisok__item{
     padding: 13px;
     font-size: medium;
     border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 .spisok__item:hover{
     box-shadow: 0 4px 20px #f4f4f4;
     border-radius: 10px;
     background: #f4f4f4;
 }
+.spisok__item.active {
+    background: #4499FF;
+    color: white;
+}
 .zadachi{
     border: 1px solid #e3e2e5;
     border-radius: 10px;
     padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto; /* Включен скролл */
+    max-height: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.zadachi__item{
+    border: 1px solid #e3e2e5;
+    border-radius: 10px;
+    padding: 15px;
+    transition: box-shadow 0.3s;
+    background: white;
+    flex-shrink: 0; /* Заметки не сжимаются */
+}
+.zadachi__item:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .zadachi__item-top{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.zadachi__item-content {
+    margin-bottom: 10px;
+    color: #555;
+}
+.zadachi__item-down{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #888;
+}
+.delete-btn {
+    background: #3388EE;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.delete-btn:hover {
+    background: #2266CC;
+}
+.no-notes {
+    text-align: center;
+    color: #888;
+    padding: 40px;
+    font-style: italic;
+}
+.tag-work {
+    background: #3388EE;
+    color: white; 
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.tag-ideas {
+    background: #3388EE;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.tag-personal {
+    background: #3388EE;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.tag-shopping {
+    background: #3388EE;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Стили для красивого скроллбара */
+.zadachi::-webkit-scrollbar {
+    width: 8px;
+}
+.zadachi::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+.zadachi::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+.zadachi::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.menu::-webkit-scrollbar {
+    width: 6px;
+}
+.menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+.menu::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+.menu::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
