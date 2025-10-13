@@ -9,7 +9,6 @@ const tagItems = document.querySelectorAll('.spisok__item');
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
 
-// Элементы модального окна
 const noteModal = document.getElementById('noteModal');
 const modalTitle = document.getElementById('modalTitle');
 const noteTitleInput = document.getElementById('noteTitle');
@@ -52,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Открытие модального окна для новой заметки
     newNoteBtn.addEventListener('click', () => openModal());
     
     searchBtn.addEventListener('click', performSearch);
@@ -63,19 +61,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Управление модальным окном
     modalClose.addEventListener('click', closeModal);
     modalCancel.addEventListener('click', closeModal);
     modalSave.addEventListener('click', saveNote);
     
-    // Закрытие модалки при клике вне ее
     noteModal.addEventListener('click', function(event) {
         if (event.target === noteModal) {
             closeModal();
         }
     });
     
-    // Закрытие модалки по ESC
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && noteModal.style.display === 'block') {
             closeModal();
@@ -126,7 +121,6 @@ function renderNotes() {
         notesContainer.appendChild(noteElement);
     });
     
-    // Обработчики для кнопок изменения
     document.querySelectorAll('.edit-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const noteId = parseInt(this.getAttribute('data-id'));
@@ -134,7 +128,6 @@ function renderNotes() {
         });
     });
     
-    // Обработчики для кнопок удаления
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const noteId = parseInt(this.getAttribute('data-id'));
@@ -154,10 +147,8 @@ function getTagName(tag) {
     return tagNames[tag] || tag;
 }
 
-// Функции для работы с модальным окном
 function openModal(noteId = null) {
     if (noteId) {
-        // Редактирование существующей заметки
         const note = notes.find(note => note.id === noteId);
         if (note) {
             modalTitle.textContent = 'Редактировать заметку';
@@ -167,7 +158,6 @@ function openModal(noteId = null) {
             currentEditingNoteId = noteId;
         }
     } else {
-        // Создание новой заметки
         modalTitle.textContent = 'Новая заметка';
         noteTitleInput.value = '';
         noteContentInput.value = '';
@@ -189,14 +179,12 @@ function saveNote() {
     const content = noteContentInput.value.trim();
     const tag = noteTagSelect.value;
     
-    // Проверяем что поля не пустые
     if (!title || !content) {
         alert('Пожалуйста, заполните все поля');
         return;
     }
     
     if (currentEditingNoteId) {
-        // Обновляем существующую заметку
         const noteIndex = notes.findIndex(note => note.id === currentEditingNoteId);
         if (noteIndex !== -1) {
             notes[noteIndex] = {
@@ -207,7 +195,6 @@ function saveNote() {
             };
         }
     } else {
-        // Создаем новую заметку
         const newNote = {
             id: Date.now(),
             title: title,
